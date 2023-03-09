@@ -12,6 +12,7 @@ class UserController extends Controller
     {
 
         $projects = Project::all();
+
         return response()->json([
             "success" => true,
             "results" => $projects
