@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Mail\ContactFormMail;
 use App\Models\Type;
 use App\Models\Technology;
 use App\Models\Lead;
@@ -66,6 +67,7 @@ class ProjectController extends Controller
         $new_lead->save();
 
         Mail::to('info@boolean.it')->send(new NewContact($new_lead));
+
 
         $project = Project::create($new);
         $project->technologies()->attach($request->technologies);

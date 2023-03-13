@@ -33,7 +33,7 @@ class ContactFormMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            replyTo: $this->contact->address,
+            replyTo: $this->contact->email,
             subject: 'Contact Form Mail',
         );
     }
