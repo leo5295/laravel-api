@@ -18,4 +18,19 @@ class UserController extends Controller
             "results" => $projects
         ]);
     }
+    public function show($slug)
+    {
+        $detail = Project::with(['technologies', 'type'])->where('slug', $slug)->first();
+        if ($detail) {
+            return response()->json([
+                "success" => true,
+                "results" => $detail
+            ]);
+        } else {
+            return response()->json([
+                "success" => false,
+                "results" => 'non ho trovato il progetto zono'
+            ]);
+        }
+    }
 }
